@@ -1,4 +1,5 @@
 import math
+from abc import ABC, abstractmethod
 from enum import Enum
 from typing import List
 
@@ -6,6 +7,36 @@ from typing import List
 #######################
 # Task1
 #######################
+class CountStrategy(ABC):
+  @abstractmethod
+  def count(self, prices:List[int]):
+    pass
+
+
+class VIPCount(CountStrategy):
+  def count(self, prices:List[int]):
+    price_sum = sum(prices)
+    if price_sum < 100:
+      return price_sum
+    elif price_sum <= 200:
+      return math.floor(0.9 * price_sum)
+    elif price_sum <= 500:
+      return math.floor(0.8 * price_sum)
+    else:
+      return max(400, math.floor(0.6 * price_sum))
+
+
+class MemberCount(CountStrategy):
+  def count(self, prices:List[int]):
+    price_sum = sum(prices)
+    return math.floor(price_sum * 0.9)
+
+
+class NormalCount(CountStrategy):
+  def count(self, prices:List[int]):    
+    return sum(prices)
+
+
 class Counter:
   def __init__(self):
     pass
@@ -55,5 +86,9 @@ class CounterV2:
     - If the customer is a member: Always take 10% off.
     - Otherwise, no discount at all.
     '''
-    # TBD
-    pass
+    if customer_type == CustomerType.NORMAL:
+      return NormalCount().count(prices)
+    elif customer_type == CustomerType.MEMBER:
+      return MemberCount().count(prices)
+    else:
+      return VIPCount().count(prices) 
