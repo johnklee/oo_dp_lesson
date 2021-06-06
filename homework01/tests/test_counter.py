@@ -12,7 +12,7 @@ class TestMyCounter(unittest.TestCase):
 
   def test_under100_v2(self):
     self.assertEqual(self.cnt_v2.count([99], CustomerType.NORMAL), 99)
-    self.assertEqual(self.cnt_v2.count([99], CustomerType.MEMBER), 99)
+    self.assertEqual(self.cnt_v2.count([99], CustomerType.MEMBER), 89)
     self.assertEqual(self.cnt_v2.count([99], CustomerType.VIP), 99)
 
   def test_100_to_200(self):
