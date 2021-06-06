@@ -1,3 +1,4 @@
+import math
 from enum import Enum
 from typing import List
 
@@ -21,9 +22,16 @@ class Counter:
       - input=1000, output=600
 
     If float number is obtained after calculation, use floor to translate it into integer.
-    '''
-    # TBD
-    pass
+    '''    
+    price_sum = sum(prices)
+    if price_sum < 100:
+      return price_sum
+    elif price_sum <= 200:
+      return math.floor(0.9 * price_sum)
+    elif price_sum <= 500:
+      return math.floor(0.8 * price_sum)
+    else:
+      return max(400, math.floor(0.6 * price_sum))
 
 
 
