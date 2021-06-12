@@ -6,4 +6,4 @@ init:
 	pip3 install -r requirements.txt
 
 test: init
-	cd homework01; pytest tests/
+	pytest tests/
