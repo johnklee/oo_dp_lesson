@@ -7,3 +7,4 @@ init:
 
 test: init
 	pytest tests/
+	cd homework01; pytest tests/
