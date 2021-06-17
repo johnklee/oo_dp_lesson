@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import List
+import math
 
 
 #######################
@@ -23,7 +24,16 @@ class Counter:
     If float number is obtained after calculation, use floor to translate it into integer.
     '''
     # TBD
-    pass
+    end_prices = 0
+    if prices[0] < 100:
+      end_prices = prices[0]
+    elif prices[0] >= 100 and prices[0] <= 200:
+      end_prices = prices[0] * 0.9
+    elif prices[0] > 200 and prices[0] <=500:
+      end_prices = prices[0] * 0.8
+    elif prices[0] > 500:
+      end_prices = max(400, prices[0] * 0.6)
+    return math.floor(end_prices)
 
 
 
@@ -48,4 +58,13 @@ class CounterV2:
     - Otherwise, no discount at all.
     '''
     # TBD
-    pass
+    end_prices = 0
+    if customer_type == CustomerType(3):
+      end_prices = Counter.count(self, prices)
+    elif customer_type == CustomerType(1):
+      end_prices = prices[0] * 0.9
+    elif customer_type == CustomerType(0):
+      end_prices = prices[0]
+    return math.floor(end_prices)
+
+  
