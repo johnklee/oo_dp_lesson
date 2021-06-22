@@ -10,6 +10,10 @@ class Cooker:
         print("Chicken is ready")
         return 'chicken'
 
+    def cookPork (self):
+        print("Pork is ready")
+        return 'pork'
+
 
 class Command(ABC):
     def do(self):
@@ -30,6 +34,13 @@ class CommandOrderChicken(Command):
 
     def do(self):
         return self.cooker.cookChicken()
+
+class CommandOrderPork(Command):
+    def __init__(self, cooker):
+        self.cooker = cooker
+
+    def do(self):
+        return self.cooker.cookPork()
 
 
 class Waiter:
@@ -57,13 +68,25 @@ class Restaurant:
         self.cooker = Cooker()
         self.waiter.cmd_dict['beef'] = CommandOrderBeef(self.cooker)
         self.waiter.cmd_dict['chicken'] = CommandOrderChicken(self.cooker)
+        self.waiter.cmd_dict['pork'] = CommandOrderPork(self.cooker)
 
-    def start_business(self):
+    '''def start_business(self):
         self.waiter.giveOrder('beef')
         self.waiter.giveOrder('chicken')
         my_dish = self.waiter.sendOrder()
         return my_dish
+    '''
 
     def start_business_with_new_dish(self):
-        # TBD
-        pass
+        self.waiter.giveOrder('beef')
+        self.waiter.giveOrder('chicken')
+        self.waiter.giveOrder('pork')
+        my_dish = self.waiter.sendOrder()
+        return my_dish
+
+'''def main():
+    r = Restaurant()
+    print(r.start_business_with_new_dish())
+
+if __name__ == '__main__':
+    main()'''
