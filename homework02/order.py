@@ -8,8 +8,6 @@ class Restaurant:
         self.waiter.cmd_dict['chicken'] = rst.CommandOrderChicken(self.cooker)
         self.waiter.cmd_dict['pork'] = rst.CommandOrderPork(self.cooker)
 
- #globals()[customer_type.name.capitalize()+"Policy"]().count(prices)  
-
     def start_business_with_new_dish(self, order:list[str]):
         for l in order:
             self.waiter.giveOrder(l)
