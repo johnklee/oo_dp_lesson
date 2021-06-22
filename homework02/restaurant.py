@@ -1,6 +1,5 @@
 from abc import abstractmethod, ABC
 
-
 class Cooker:
     def cookBeef(self):
         print("Beef is ready")
@@ -61,7 +60,7 @@ class Waiter:
         self.orders = []
         return dish_list
 
-
+'''
 class Restaurant:
     def __init__(self):
         self.waiter = Waiter()
@@ -70,23 +69,24 @@ class Restaurant:
         self.waiter.cmd_dict['chicken'] = CommandOrderChicken(self.cooker)
         self.waiter.cmd_dict['pork'] = CommandOrderPork(self.cooker)
 
-    '''def start_business(self):
+    def start_business(self):
         self.waiter.giveOrder('beef')
         self.waiter.giveOrder('chicken')
         my_dish = self.waiter.sendOrder()
         return my_dish
-    '''
+    
 
     def start_business_with_new_dish(self):
         self.waiter.giveOrder('beef')
-        self.waiter.giveOrder('chicken')
         self.waiter.giveOrder('pork')
+        self.waiter.giveOrder('chicken')
         my_dish = self.waiter.sendOrder()
         return my_dish
 
-'''def main():
+def main():
     r = Restaurant()
     print(r.start_business_with_new_dish())
 
 if __name__ == '__main__':
-    main()'''
+    main()
+'''
