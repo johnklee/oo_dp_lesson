@@ -9,10 +9,8 @@ BYE_API_NAME = 'bye_api'
 
 
 def regr_greet_api(_func=None, *, api_name=GREET_API_NAME):
-  # TBD
   pass
 
 
 def regr_bye_api(_func=None, *, api_name=BYE_API_NAME):
-  # TBD
   pass
