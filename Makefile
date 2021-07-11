@@ -3,7 +3,7 @@
 all: test lint
 
 init:
-  pip3 install -r requirements.txt
+	pip3 install -r requirements.txt
 
 test: init
-  cd homework01; pytest tests/
+	cd homework01; pytest tests/
