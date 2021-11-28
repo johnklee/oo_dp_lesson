@@ -10,6 +10,7 @@ Object Oriented Programming Lesson (Design principles+Design patterns)
 * [Data Classes in Python 3.7+ (Guide)](https://nbviewer.jupyter.org/github/johnklee/oo_dp_lesson/blob/master/lessons/dataclass_in_python37/notebook.ipynb)
 * [Understanding the Python Mock Object Library](https://nbviewer.jupyter.org/github/johnklee/oo_dp_lesson/blob/master/lessons/python_mock_library/notebook.ipynb)
 <br/>
+
 * Leetcode study
   * Medium
     * [503. Next Greater Element II](https://nbviewer.org/github/johnklee/oo_dp_lesson/blob/master/lessons/Leetcodes/Medium_503_NextGreaterElement2/notebook.ipynb)
