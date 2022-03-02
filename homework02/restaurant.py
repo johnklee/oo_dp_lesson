@@ -2,11 +2,11 @@ from abc import abstractmethod, ABC
 
 
 class Cooker:
-    def cookBeef(self):
+    def cook_beef(self):
         print("Beef is ready")
         return 'beef'
 
-    def cookChicken(self):
+    def cook_chicken(self):
         print("Chicken is ready")
         return 'chicken'
 
@@ -21,7 +21,7 @@ class CommandOrderBeef(Command):
         self.cooker = cooker
 
     def do(self):
-        return self.cooker.cookBeef()
+        return self.cooker.cook_beef()
 
 
 class CommandOrderChicken(Command):
@@ -29,7 +29,7 @@ class CommandOrderChicken(Command):
         self.cooker = cooker
 
     def do(self):
-        return self.cooker.cookChicken()
+        return self.cooker.cook_chicken()
 
 
 class Waiter:
@@ -38,10 +38,10 @@ class Waiter:
         self.cmd_dict = {}
         self.orders = []
 
-    def giveOrder(self, order):
+    def give_order(self, order):
         self.orders.append(self.cmd_dict[order])
 
-    def sendOrder(self):
+    def send_order(self):
         print("Send out order...")
         dish_list = []
         for o in self.orders:
@@ -59,9 +59,9 @@ class Restaurant:
         self.waiter.cmd_dict['chicken'] = CommandOrderChicken(self.cooker)
 
     def start_business(self):
-        self.waiter.giveOrder('beef')
-        self.waiter.giveOrder('chicken')
-        my_dish = self.waiter.sendOrder()
+        self.waiter.give_order('beef')
+        self.waiter.give_order('chicken')
+        my_dish = self.waiter.send_order()
         return my_dish
 
     def start_business_with_new_dish(self):
