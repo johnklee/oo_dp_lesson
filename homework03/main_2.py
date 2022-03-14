@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-import abc
-
-
-
 class Meal():
     def __init__(self, name, price):
         self.name = name
@@ -15,24 +11,28 @@ class Meal():
         return f"{self.price}"
 
     def __str__(self):
-        return f"{self.name} {self.price}"
+        return f"{self.name}"+ f"(" + f"{self.price}" + f")"
 
 
 class AbstractSideDish(Meal):
-    def __init__(self, meal:Meal, drink, snack, combo_price):
-        self.main_meal = meal
+    
+    def __init__(self, main_meal, drink, snack, sidedish_price):
+        self.main_meal = main_meal
         self.drink = drink
         self.snack = snack
-        self.combo_price = combo_price
+        self.sidedish_price = sidedish_price
+        #super().__init__(f"{self.main_meal.name}{self.drink}{self.snack}", self.main_meal.price + self.sidedish_price)
 
     def get_name(self,) -> str:
         return f"{self.main_meal.get_name()}{self.drink}{self.snack}"
 
     def get_price(self) -> int:
-        return f"{self.combo_price}"
+        combo_price = 0
+        combo_price = self.main_meal.price + self.sidedish_price
+        return f"{combo_price}"
 
     def __str__(self):
-        return f"{self.main_meal.get_name()}{self.drink}{self.snack}{self.combo_price}"
+        return f"{self.main_meal.get_name()}|{self.drink}|{self.snack}"+ f"(" + f"{AbstractSideDish.get_price(self)}" + f")"
 
 
 class FriedChicken(Meal):
@@ -46,18 +46,18 @@ class Hambuger(Meal):
         self.price = price
          
 class SideDish1(AbstractSideDish):
-    def __init__(self, main_meal, drink = "可樂", snack = "薯條", combo_price = 80):
+    def __init__(self, main_meal, drink = "可樂", snack = "薯條", sidedish_price = 30):
         self.main_meal = main_meal
         self.drink = drink
         self.snack = snack
-        self.combo_price = combo_price
+        self.sidedish_price  = sidedish_price
 
 class SideDish2(AbstractSideDish):
-    def __init__(self, main_meal, drink = "紅茶", snack = "雞塊", combo_price = 90):
+    def __init__(self, main_meal, drink = "紅茶", snack = "雞塊", sidedish_price = 60):
         self.main_meal = main_meal
         self.drink = drink
         self.snack = snack
-        self.combo_price = combo_price
+        self.sidedish_price  = sidedish_price 
 
  
 
