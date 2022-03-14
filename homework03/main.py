@@ -1,19 +1,48 @@
 #!/usr/bin/env python
-class FriedChicken:
-    pass
+class Meal:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def get_name(self):
+        return self.name
+
+    def get_price(self):
+        return self.price
+
+    def __str__(self):
+        return f'{self.name} ({self.price})'
 
 
-class Hambuger:
-    pass
+class FriedChicken(Meal):
+    def __init__(self):
+        super().__init__('炸雞', 50)
 
 
-class SideDish1:
-    pass
+class Hambuger(Meal):
+    def __init__(self):
+        super().__init__('漢堡', 30)
 
 
-class SideDish2:
-    pass
+class AbstractSideDish(Meal):
+    def __init__(self, main_meal, drink, snack, extra_price):
+        self.main_meal = main_meal
+        self.drink = drink
+        self.snack = snack
+        super().__init__(
+            f"{main_meal.name}|{self.drink}|{self.snack}",   # name
+            main_meal.price + extra_price                    # price
+        )
 
+
+class SideDish1(AbstractSideDish):
+    def __init__(self, main_meal):
+        super().__init__(main_meal, '可樂', '薯條', 30)
+
+
+class SideDish2(AbstractSideDish):
+    def __init__(self, main_meal):
+        super().__init__(main_meal, '紅茶', '雞塊', 60)
 
 
 if __name__ == '__main__':
